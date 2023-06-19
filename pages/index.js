@@ -6,16 +6,14 @@ import PageWrapper from "@/components/PageWrapper";
 import { mongooseConnect } from "@/lib/mongoose";
 import { Product } from "@/models/Product";
 
-function randomItem() {}
-
 export default function HomePage({ featuredProduct, newProducts }) {
   return (
-    <PageWrapper>
+    <>
       <Header />
       <Featured products={featuredProduct} />
       <NewProducts products={newProducts} />
       <MailingList />
-    </PageWrapper>
+    </>
   );
 }
 

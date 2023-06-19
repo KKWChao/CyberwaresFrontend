@@ -4,6 +4,7 @@ import { mongooseConnect } from "@/lib/mongoose";
 import { Category } from "@/models/Category";
 import ItemGrid from "@/components/ItemGrid";
 import Title from "@/components/Title";
+import PageWrapper from "@/components/PageWrapper";
 
 export default function CatagoriesPage({ products, categories }) {
   return (

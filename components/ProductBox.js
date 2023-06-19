@@ -4,8 +4,9 @@ import CartIcon from "./icons/CartIcon";
 import Link from "next/link";
 import { useContext } from "react";
 import { CartContext } from "./CartContext";
+import { motion } from "framer-motion";
 
-const ProductWrapper = styled.div``;
+const ProductWrapper = styled(motion.div)``;
 
 const WhiteBox = styled(Link)`
   background-color: #fff;

@@ -6,6 +6,10 @@ export const themeLight = {
   highlight: "#5542f6",
   hover: "#999999",
   active: "#5C5C5C",
+
+  white: "#FFFFFF",
+  black: "#000000",
+  primary: "#5542f6",
 };
 
 export const themeDark = {

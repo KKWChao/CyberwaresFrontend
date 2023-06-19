@@ -1,8 +1,9 @@
 import styled from "styled-components";
 import ProductBox from "./ProductBox";
 import CategoryBox from "./CategoryBox";
+import { motion } from "framer-motion";
 
-const ItemsGrid = styled.div`
+const ItemsGrid = styled(motion.div)`
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 20px;
@@ -17,7 +18,11 @@ export default function ItemGrid({ items, type }) {
   switch (type) {
     case "product":
       return (
-        <ItemsGrid>
+        <ItemsGrid
+          initial={{ y: -50, opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
+          exit={{ y: -50, opacity: 0 }}
+        >
           {items.map((item, idx) => (
             <ProductBox {...item} key={idx} />
           ))}

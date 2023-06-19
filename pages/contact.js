@@ -1,8 +1,7 @@
 import Center from "@/components/Center";
 import Header from "@/components/Header";
-import PageWrapper from "@/components/PageWrapper";
 
-export default function CatagoriesPage() {
+export default function Contact() {
   return (
     <>
       <Header />

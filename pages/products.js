@@ -5,6 +5,7 @@ import { Product } from "@/models/Product";
 import { Category } from "@/models/Category";
 import ItemGrid from "@/components/ItemGrid";
 import Title from "@/components/Title";
+import PageWrapper from "@/components/PageWrapper";
 
 export default function ProductsPage({ products, categories }) {
   return (
@@ -13,7 +14,6 @@ export default function ProductsPage({ products, categories }) {
       <Center>
         <ItemGrid items={categories} type={"categories"} />
         <Title>All Products</Title>
-
         <ItemGrid items={products} type="product" />
       </Center>
     </>

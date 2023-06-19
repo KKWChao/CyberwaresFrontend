@@ -11,6 +11,8 @@ export const ButtonStyle = css`
   text-decoration: none;
   font-family: "Poppins", sans-serif;
   font-weight: 500;
+  transition: all 250ms ease-in-out;
+
   cursor: pointer;
   svg {
     height: 16px;
@@ -29,6 +31,11 @@ export const ButtonStyle = css`
     css`
       background-color: #fff;
       color: #000;
+
+      &:hover {
+        background-color: ${(props) => props.theme.primary};
+        color: ${(props) => props.theme.white};
+      }
     `}
 
   ${(props) =>
@@ -73,6 +80,11 @@ export const ButtonStyle = css`
       background-color: transparent;
       border: 1px solid ${primary};
       color: ${primary};
+
+      &:hover {
+        background-color: ${(props) => props.theme.highlight};
+        color: ${(props) => props.theme.text};
+      }
     `}
 
   ${(props) =>

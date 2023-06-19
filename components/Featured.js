@@ -10,7 +10,7 @@ import { motion } from "framer-motion";
 const Bg = styled.div`
   background-color: #222;
   color: white;
-  padding: 50px 0;
+  padding: 4rem 0;
 `;
 
 const Title = styled(motion.h1)`
@@ -25,17 +25,18 @@ const Title = styled(motion.h1)`
 
 const Description = styled.p`
   color: #aaa;
-  font-size: 0.8rem;
+  font-size: 1rem;
 `;
 
 const ColumnWrapper = styled.div`
   display: grid;
   grid-template-columns: 1fr;
-  gap: 40px;
+  gap: 5rem;
 
   img {
     max-width: 100%;
-    max-height: 200px;
+    height: 25rem;
+    max-height: 30rem;
     display: block;
     margin: 0 auto;
   }
@@ -72,35 +73,33 @@ export default function Featured({ products }) {
   }
 
   return (
-    <div>
-      <Bg>
-        <Center>
-          <ColumnWrapper>
-            <Column>
-              <div>
-                <Title>{products?.title}</Title>
-                <Description>{products?.description}</Description>
-                <ButtonWrapper>
-                  <ButtonLink
-                    href={"/product/" + products?._id}
-                    outline={1}
-                    white={1}
-                  >
-                    Read More
-                  </ButtonLink>
-                  <Button white="true" onClick={() => addFeaturedToCart()}>
-                    <CartIcon />
-                    Add to Cart
-                  </Button>
-                </ButtonWrapper>
-              </div>
-            </Column>
-            <Column>
-              <img src={products?.images?.[0]} alt="" />
-            </Column>
-          </ColumnWrapper>
-        </Center>
-      </Bg>
-    </div>
+    <Bg>
+      <Center>
+        <ColumnWrapper>
+          <Column>
+            <div>
+              <Title>{products?.title}</Title>
+              <Description>{products?.description}</Description>
+              <ButtonWrapper>
+                <ButtonLink
+                  href={"/product/" + products?._id}
+                  outline={1}
+                  white={1}
+                >
+                  Read More
+                </ButtonLink>
+                <Button white="true" onClick={() => addFeaturedToCart()}>
+                  <CartIcon />
+                  Add to Cart
+                </Button>
+              </ButtonWrapper>
+            </div>
+          </Column>
+          <Column>
+            <img src={products?.images?.[0]} alt="" />
+          </Column>
+        </ColumnWrapper>
+      </Center>
+    </Bg>
   );
 }

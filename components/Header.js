@@ -5,6 +5,8 @@ import { useContext, useState } from "react";
 import { CartContext } from "./CartContext";
 import Hamburger from "./icons/Hamburger";
 import { primary } from "@/lib/colors";
+import { motion } from "framer-motion";
+import { useRouter } from "next/router";
 
 const StyledHeader = styled.header`
   background-color: #222;
@@ -15,40 +17,32 @@ const Logo = styled(Link)`
   text-decoration: none;
   position: relative;
   z-index: 3;
+
+  @media screen and (min-width: 768px) {
+    border: 1px solid ${(props) => props.theme.primary};
+    padding: 1rem;
+  }
 `;
 
 const Wrapper = styled.div`
   display: flex;
   justify-content: space-between;
-  padding: 20px 0;
+  padding: 20px;
 `;
 
 const NavLink = styled(Link)`
   display: block;
-  color: #aaa;
+  color: ${(props) =>
+    props.href === props.pathName ? props.theme.primary : props.theme.white};
   text-decoration: none;
-  padding: 10px 0;
-  transition: ease-in-out;
-  animation-duration: 0.3ms;
-
-  span {
-    display: inline-block;
-    background-color: ${primary};
-    padding: 0 0.5rem;
-    border-radius: 0.2rem;
-    text-align: center;
-    margin-left: 0.5rem;
-    color: ${(props) => props.theme.bg};
-  }
+  transition: all 500ms ease-in-out;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem;
 
   &:hover {
     color: ${(props) => props.theme.highlight};
-    span {
-      color: ${(props) => props.theme.text};
-    }
-  }
-  @media screen and (min-width: 768px) {
-    padding: 0;
   }
 `;
 
@@ -62,8 +56,12 @@ const StyledNav = styled.nav`
   right: 0;
   padding: 70px 20px 20px;
   background-color: #222;
+  align-items: center;
 
-  ${(props) => (props.mobileNavActive ? `display: block;` : `display: none;`)}
+  ${(props) =>
+    props.mobileNavActive
+      ? `display: block; overflow: hidden`
+      : `display: none;`}
 
   @media screen and (min-width: 768px) {
     display: flex;
@@ -86,33 +84,61 @@ const NavButton = styled.button`
   }
 `;
 
+const CartCount = styled(Link)`
+  background-color: ${primary};
+
+  color: ${(props) => props.theme.bg};
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  height: 2rem;
+
+  @media screen and (min-width: 768px) {
+    rotate: 315deg;
+
+    margin-left: 0.5rem;
+    padding: 0 0.5rem;
+    width: 1rem;
+    span {
+      rotate: 45deg;
+    }
+  }
+`;
+
+const links = [
+  { href: "/", text: "Home" },
+  { href: "/products", text: "Products" },
+
+  { href: "/account", text: "Account" },
+  { href: "/contact", text: "Contact Us" },
+  { href: "/cart", text: "Cart" },
+];
+
 export default function Header() {
+  const [mobileNavActive, setMobileNavActive] = useState(false);
   const { cartProducts } = useContext(CartContext);
 
-  const [mobileNavActive, setMobileNavActive] = useState(false);
+  const router = useRouter();
 
   return (
     <StyledHeader>
-      <Center>
-        <Wrapper>
-          <Logo href={"/"}>CyberWares</Logo>
-          <StyledNav mobileNavActive={mobileNavActive}>
-            <NavLink href={"/"}>Home</NavLink>
-            <NavLink href={"/products"}>Products</NavLink>
-            {/* <NavLink href={"/categories"}>Categories</NavLink> */}
-            {/* <NavLink href={"/account"}>Account</NavLink> */}
-            <NavLink href={"/cart"}>
-              Cart
-              <span>{cartProducts.length}</span>
+      <Wrapper>
+        <Logo href={"/"}>CyberWares</Logo>
+        <StyledNav mobileNavActive={mobileNavActive}>
+          {links.map((link) => (
+            <NavLink href={link.href} pathName={router.pathname}>
+              {link.text}
             </NavLink>
-          </StyledNav>
-          <NavButton
-            onClick={() => setMobileNavActive((previous) => !previous)}
-          >
-            <Hamburger />
-          </NavButton>
-        </Wrapper>
-      </Center>
+          ))}
+          <CartCount href={"/cart"}>
+            <span>{cartProducts.length}</span>
+          </CartCount>
+        </StyledNav>
+        <NavButton onClick={() => setMobileNavActive((previous) => !previous)}>
+          <Hamburger />
+        </NavButton>
+      </Wrapper>
     </StyledHeader>
   );
 }

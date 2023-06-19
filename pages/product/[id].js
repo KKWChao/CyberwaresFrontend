@@ -3,6 +3,7 @@ import Button from "@/components/Button";
 import { CartContext } from "@/components/CartContext";
 import Center from "@/components/Center";
 import Header from "@/components/Header";
+import PageWrapper from "@/components/PageWrapper";
 import ProductImages from "@/components/ProductImages";
 import Title from "@/components/Title";
 import { mongooseConnect } from "@/lib/mongoose";
@@ -42,7 +43,7 @@ const ItemInfo = styled.div`
 export default function ProductPage({ product }) {
   const { addProduct } = useContext(CartContext);
   return (
-    <>
+    <PageWrapper>
       <Header />
       <Center>
         <ColumnWrapper>
@@ -65,7 +66,7 @@ export default function ProductPage({ product }) {
           </ItemInfo>
         </ColumnWrapper>
       </Center>
-    </>
+    </PageWrapper>
   );
 }
 
