@@ -52,7 +52,3 @@ export default async function handle(req, res) {
 export const config = {
   api: { bodyParser: false },
 };
-
-// famed-feisty-zippy-salute
-// acct_1NGAJuBFaSG8EebA
-// whsec_620c37a7e5b25b552fc584444a2e99012a0e332ebb971b3b6e1df73fd9a0e828
