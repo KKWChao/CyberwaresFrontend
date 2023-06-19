@@ -1,6 +1,5 @@
 import Link from "next/link";
 import styled from "styled-components";
-import Center from "@/components/Center";
 import { useContext, useState } from "react";
 import { CartContext } from "./CartContext";
 import Hamburger from "./icons/Hamburger";
@@ -86,17 +85,15 @@ const NavButton = styled.button`
 
 const CartCount = styled(Link)`
   background-color: ${primary};
-
-  color: ${(props) => props.theme.bg};
+  color: ${(props) => props.theme.white};
   display: flex;
   justify-content: center;
   align-items: center;
-
+  text-decoration: none;
   height: 2rem;
 
   @media screen and (min-width: 768px) {
     rotate: 315deg;
-
     margin-left: 0.5rem;
     padding: 0 0.5rem;
     width: 1rem;
@@ -109,7 +106,6 @@ const CartCount = styled(Link)`
 const links = [
   { href: "/", text: "Home" },
   { href: "/products", text: "Products" },
-
   { href: "/account", text: "Account" },
   { href: "/contact", text: "Contact Us" },
   { href: "/cart", text: "Cart" },
@@ -124,7 +120,9 @@ export default function Header() {
   return (
     <StyledHeader>
       <Wrapper>
-        <Logo href={"/"}>CyberWares</Logo>
+        <Logo href={"/"} as={motion.div}>
+          CyberWares
+        </Logo>
         <StyledNav mobileNavActive={mobileNavActive}>
           {links.map((link) => (
             <NavLink href={link.href} pathName={router.pathname}>

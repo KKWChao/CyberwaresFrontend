@@ -4,8 +4,6 @@ import { Product } from "@/models/Product";
 import { buffer } from "micro";
 const stripe = require("stripe")(process.env.STRIPE_SECRET);
 
-const endpointSecret =
-  "whsec_620c37a7e5b25b552fc584444a2e99012a0e332ebb971b3b6e1df73fd9a0e828";
 const endpointSecretEnv = process.env.WEBHOOK_ENDPOINT_SECRET;
 
 export default async function handle(req, res) {
@@ -19,7 +17,7 @@ export default async function handle(req, res) {
     event = stripe.webhooks.constructEvent(
       await buffer(req),
       sig,
-      endpointSecret
+      endpointSecretEnv
     );
   } catch (err) {
     res.status(400).send(`Webhook Error: ${err.message}`);
