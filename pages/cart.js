@@ -5,6 +5,7 @@ import Header from "@/components/Header";
 import Input from "@/components/Input";
 import PageWrapper from "@/components/PageWrapper";
 import Table from "@/components/Table";
+import Title from "@/components/Title";
 import axios from "axios";
 import { useContext, useEffect, useState } from "react";
 import styled from "styled-components";
@@ -149,7 +150,7 @@ export default function CartPage() {
         <Center>
           <ColumnsWrapper>
             <Box>
-              <h1>Thanks for your order!</h1>
+              <Title>Thanks for your order!</Title>
               <p>We will email you when your order will be sent.</p>
             </Box>
           </ColumnsWrapper>
@@ -164,7 +165,7 @@ export default function CartPage() {
       <Center>
         <ColumnsWrapper>
           <Box>
-            <h2>Cart</h2>
+            <Title>Cart</Title>
             {!cartProducts?.length && <div>Your Cart is Empty</div>}
             {products?.length > 0 && (
               <Table>

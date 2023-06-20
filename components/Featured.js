@@ -17,6 +17,7 @@ const Title = styled(motion.h1)`
   margin: 0;
   font-weight: normal;
   font-size: 1.5rem;
+  font-family: "Press Start 2P", cursive;
 
   @media screen and (min-width: 768px) {
     font-size: 3rem;

@@ -16,6 +16,7 @@ const Logo = styled(Link)`
   text-decoration: none;
   position: relative;
   z-index: 3;
+  font-family: "Press Start 2P", cursive;
 
   @media screen and (min-width: 768px) {
     border: 1px solid ${(props) => props.theme.primary};
@@ -39,6 +40,7 @@ const NavLink = styled(Link)`
   justify-content: center;
   align-items: center;
   padding: 1rem;
+  font-family: "Press Start 2P", cursive;
 
   &:hover {
     color: ${(props) => props.theme.highlight};
@@ -125,7 +127,7 @@ export default function Header() {
         </Logo>
         <StyledNav mobileNavActive={mobileNavActive}>
           {links.map((link) => (
-            <NavLink href={link.href} pathName={router.pathname}>
+            <NavLink href={link.href} pathName={router.pathname} key={link}>
               {link.text}
             </NavLink>
           ))}
